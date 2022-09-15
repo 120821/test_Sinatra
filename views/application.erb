@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blogs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://apps.bdimg.com/libs/fontawesome/4.2.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/default.min.css">
+    <script src="https://cdn.ckeditor.com/4.18.0/standard/ckeditor.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="nav">
+      <span class="title">我的博客系统</span>
+      <!-- 使用 span 把左右两侧的元素给撑开 -->
+      <span class="spacer">
+        <a href="/blog">主页</a>
+      </span>
+    </div>
+    <!-- 版心 -->
+    <div class="container">
+      <!-- 左侧区域，显示用户信息 -->
+      <div class="container-left">
+        <!-- 用户详情 -->
+        <div class="card">
+          <!-- 用户的头像 -->
+          <!-- 用户名 -->
+          <h3></h3>
+          <!-- 其它信息 -->
+          <a href="https://blog.csdn.net/m0_67038390?type=blog" target='_blank' style="color: grey">CSDN 地址</a>
+          <a href="https://github.com/120821" target='_blank' style="color: grey">GitHub 地址</a>
+          <!-- 文章分类 -->
+          <div class="counter">
+            <span>文章</span>
+            <span>分类</span>
+          </div>
+          <div class="counter">
+          </div>
+        </div>
+      </div>
+      <!-- 右侧区域，显示博客列表 -->
+      <div class="container-right">
+        <!-- 每个 blog 代表一篇博客 -->
+        <div class="blog">
+          <%= yield %>
+        </div>
+      </div>
+     <footer>
+       <script src="https://cdn.jsdelivr.net/npm/greensock@1.20.2/dist/TweenLite.js"></script>
+       <script src="https://cubism.live2d.com/sdk-web/cubismcore/live2dcubismcore.min.js"></script>
+       <script src="https://cdn.jsdelivr.net/npm/pixi.js@5.3.6/dist/pixi.min.js"></script>
+       <script src="https://cdn.jsdelivr.net/npm/pixi-live2d-display@0.3.1/dist/cubism4.min.js"></script>
+       <link href="https://cdn.jsdelivr.net/gh/journey-ad/blog-img@76ba2b3/live2d/lib/pio.css" rel="stylesheet" type="text/css"/>
+       <script src="https://cdn.jsdelivr.net/gh/journey-ad/blog-img@76ba2b3/live2d/lib/pio.js"></script>
+       <script src="https://cdn.jsdelivr.net/gh/journey-ad/blog-img@76ba2b3/live2d/lib/pio_sdk4.js"></script>
+       <script src="https://cdn.jsdelivr.net/gh/journey-ad/blog-img@76ba2b3/live2d/lib/load.js"></script>
+       <!--
+       <link href="https://files.sweetysoft.com/image_after_2022_08_24/4440/pio.css" rel="stylesheet" type="text/css"/>
+       <script src="https://files.sweetysoft.com/image_after_2022_08_24/4434/load.js"></script>
+       <script src="https://files.sweetysoft.com/image_after_2022_08_24/4435/pio_sdk4.js"></script>
+       <script src="https://files.sweetysoft.com/image_after_2022_08_24/4436/cubism4.min.js"></script>
+       <script src="https://files.sweetysoft.com/image_after_2022_08_24/4437/pixi.min.js"></script>
+       <script src="https://files.sweetysoft.com/image_after_2022_08_24/4438/live2dcubismcore.min.js"><script>
+       <script src="https://files.sweetysoft.com/image_after_2022_08_24/4439/TweenLite.js"></script>
+       -->
+     </footer>
+  </body>
+</html>
+<style>
+#pio {
+ touch-action: none;
+ cursor: inherit;
+ height: 240px;
+ vertical-align: middle;
+}
+</style>
+<script>
+  hljs.highlightAll();
+  //hljs.initHighlightingOnLoad();
+</script>
