@@ -1,6 +1,5 @@
 require 'sinatra'
-
-
+require 'yaml/store'
 
 class Stream
   def each
@@ -12,11 +11,30 @@ get('/each') { Stream.new }
 
 
 get '/' do
-  'hello world'
+  @title = 'Welcome to the Suffragist!'
+  Choices = {
+    'HAM' => 'Hamburger',
+    'PIZ' => 'Pizza',
+    'CUR' => 'Curry',
+    'NOO' => 'Noodles',
+  }
+  erb :index
 end
 
-get '/blog' do
-  erb :index
+post '/cast' do
+  @title = 'Thanks for casting your vote!'
+  @vote  = params['vote']
+  erb :cast
+end
+
+get '/results' do
+  @votes = { 'HAM' => 7, 'PIZ' => 5, 'CUR' => 3 }
+  erb :results
+end
+
+get '/hello' do
+  'Hello, voter!'
+  'hello world'
 end
 
 get '/post' do
