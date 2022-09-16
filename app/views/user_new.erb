@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <meta charset='UTF-8' />
+    <title>AR</title>
+    <link href='//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css' rel='stylesheet' />
+  </head>
+  <body class='container'>
+    <h1><%= @title %></h1>
+    <p>all user</p>
+    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
+
+    <form action='new_one' method='post'>
+      <ul class='unstyled'>
+          <li>
+            <label class='radio'>
+              name:
+              <input id="name" name="name" type="text">
+            </label>
+          </li>
+      </ul>
+      <button type='submit' class='btn btn-primary'>确定</button>
+    </form>
+      <ul class='unstyled'>
+        <% @users.each do |user| %>
+          <li>
+            <label class='radio'>
+              <%= user.name  rescue '' %>
+            </label>
+          </li>
+        <% end %>
+      </ul>
+    <hr/>
+  </body>
+</html>

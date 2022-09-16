@@ -1,0 +1,44 @@
+<h1><%= @title %></h1>
+<h1><%= @count %></h1>
+<a href="/user_new">new</a>
+<table>
+  <tr>
+    <th style="width: 150px;">
+      id
+    </th>
+    <th style="width: 150px;">
+      name
+    </th>
+    <th style="width: 300px;">
+      created_at
+    </th>
+    <th style="width: 150px;">
+
+    </th>
+  </tr >
+  <% @users.each do |user| %>
+    <tr >
+      <td>
+        <label class='radio'>
+          <%= user.id rescue '' %>
+        </label>
+      </td>
+      <td>
+        <label class='radio'>
+          <%= user.name  rescue '' %>
+        </label>
+      </td>
+      <td>
+        <label class='radio'>
+          <%= user.created_at rescue '' %>
+        </label>
+      </td>
+      <td>
+        <label class='radio'>
+          <a href="/users/<%= user.id %>">show</a>
+          <a href="/users/<%= user.id %>" method="post" >Delete</a>
+        </label>
+      </td>
+    </tr>
+  <% end %>
+</table>

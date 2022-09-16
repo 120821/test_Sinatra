@@ -1,0 +1,10 @@
+<h1>hihihi show</h1>
+user:
+<%= @user.name %>
+<%= @user.id %>
+删除
+<form action="user/<%= @user.id %>" method="post">
+  <input id="hidden" type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="delete">
+</form>
+<a href="/user/<%= @user.id %>" name="_method" value="delete">Delete</a>
