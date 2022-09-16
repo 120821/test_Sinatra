@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'yaml/store'
+require "sinatra/namespace"
 require "sinatra/activerecord"
 set :database, {adapter: "sqlite3", database: "foo.sqlite3"}
 
@@ -19,6 +20,16 @@ end
 get('/each') { Stream.new }
 
 
+namespace '/api/v1 ' do
+  before do
+    content_type 'application/json'
+  end
+
+  get '/user' do
+    User.all.to_json
+  end
+end
+
 get '/users' do
   @users = User.all
   erb :index
@@ -28,7 +39,6 @@ get '/users/:id' do
   @user = User.find(params[:id])
   erb :show
 end
-
 
 get '/' do
   @title = 'Welcome to the Suffragist!'
