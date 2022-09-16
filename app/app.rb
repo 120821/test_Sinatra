@@ -49,16 +49,18 @@ get '/api/v1/json' do
 end
 
 #新建user
-post '/new_one' do
-  @users = User.all
-  @user = User.create(params[:name])
-  erb :user_new
+get '/user/new' do
+  erb :'users/new'
 end
-get '/new' do
-  @users = User.all
-  @user = User.create(params[:name])
-  erb :user_new
+post '/user/new' do
+ @user = User.create name: params['name']
+ if @user.save
+   redirect "/users/#{@user.id}"
+ else
+   erb :"users/new"
+ end
 end
+
 
 get '/users/?' do
   @title = 'hihihi! users'
@@ -66,17 +68,6 @@ get '/users/?' do
   @count = @users.all.size
 #  @users.to_json
   erb :users
-end
-get '/user_new/:id' do
-  @title = 'hihihi!'
-  @user = User.find(params[:id])
-  @user = User.create name: params['name']
-  erb :user_new
-end
-post '/user_create' do
-  @title = 'hihihi!'
-  @user = User.find(params[:id])
-  @user = User.create name: params['name']
 end
 
 get '/users/:id' do
@@ -106,6 +97,3 @@ class App < Sinatra::Base
 
 end
 
-get '/' do
-  'Hello!'
-end
