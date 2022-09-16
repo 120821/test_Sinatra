@@ -1,5 +1,14 @@
 require 'sinatra'
 require 'yaml/store'
+require "sinatra/activerecord"
+set :database, {adapter: "sqlite3", database: "foo.sqlite3"}
+
+class User < ActiveRecord::Base
+  validates_presence_of :name
+end
+class MyApplication < Sinatra::Base
+  register Sinatra::ActiveRecordExtension
+end
 
 class Stream
   def each
@@ -8,6 +17,17 @@ class Stream
 end
 
 get('/each') { Stream.new }
+
+
+get '/users' do
+  @users = User.all
+  erb :index
+end
+
+get '/users/:id' do
+  @user = User.find(params[:id])
+  erb :show
+end
 
 
 get '/' do

@@ -20,5 +20,10 @@
       </ul>
       <button type='submit' class='btn btn-primary'>Cast this vote!</button>
     </form>
+    <hr/>
+    <% @users.each do |user| %>
+      <%= user.name %>
+      <br/>
+    <% end %>
   </body>
 </html>
