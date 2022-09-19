@@ -45,22 +45,43 @@ get '/api/v1/json' do
       end
     ]
   }
-  "#{a.to_json}"
+  a.to_json
+end
+
+get '/' do
+  "hello world"
 end
 
 #新建user
 get '/user/new' do
   erb :'users/new'
 end
+
 post '/user/new' do
- @user = User.create name: params['name']
- if @user.save
-   redirect "/users/#{@user.id}"
- else
-   erb :"users/new"
- end
+  @user = User.create name: params['name']
+  if @user.save
+    redirect "/users/#{@user.id}"
+  else
+    erb :"users/new"
+  end
 end
 
+put '/user/:id' do
+  @user = User.find params[:id]
+  @user.update name: params['name']
+  if @user.save
+    redirect "/users/#{@user.id}"
+  else
+    erb :"users"
+  end
+end
+
+delete '/user/:id' do
+  @user = User.find params[:id]
+  @user.destroy
+  #@user = @user.delete_all
+  erb :"users"
+end
 
 get '/users/?' do
   @title = 'hihihi! users'
@@ -70,6 +91,7 @@ get '/users/?' do
   erb :users
 end
 
+#show页面
 get '/users/:id' do
   @user= User.find(params[:id])
   #这两个erb渲染写法都可以使用
@@ -82,18 +104,10 @@ end
 #  @user.to_json
 #end
 
-
+#删除
 post "/users/:id" do
   @user = User.find(params[:id])
   @user.destroy
   redirect_back "/users"
 #  erb :users
 end
-
-class App < Sinatra::Base
-  before do
-    content_type :json
-  end
-
-end
-
