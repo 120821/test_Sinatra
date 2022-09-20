@@ -4,6 +4,12 @@ require 'sinatra/activerecord'
 class User < ActiveRecord::Base
 end
 
+class Account < ActiveRecord::Base
+end
+
+class Manager < ActiveRecord::Base
+end
+
 class Stream
   def each
     a = {
@@ -26,6 +32,35 @@ class Stream
     #end
 
   end
+end
+
+get '/managers/?' do
+  @title = 'hihihi! managers'
+  @managers = Manager.all.order('id desc')
+  @count = @managers.all.size
+#  @managers.to_json
+  erb :managers
+end
+
+get '/managers/:name' do
+  @title = 'hihihi! managers'
+  @managers = Manager.all.order('id desc')
+  @first_name_managers = @managers.where('first_name = ?', params[:name])
+  @last_name_managers = @managers.where('last_name = ?', params[:name])
+  puts @first_name_managers.size
+  puts @last_name_managers.size
+#  Manager.all.order('id desc').where('last_name = ?', params[:name])
+  @count = (@first_name_managers.size) + (@last_name_managers.size)
+#  @managers.to_json
+  erb :find_managers
+end
+
+get '/accounts/?' do
+  @title = 'hihihi! accounts'
+  @accounts = Account.all.order('id desc')
+  @count = @accounts.all.size
+#  @accounts.to_json
+  erb :accounts
 end
 
 get('/each') { Stream.new }

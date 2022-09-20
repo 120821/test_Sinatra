@@ -1,0 +1,41 @@
+<h1><%= @title %></h1>
+<h1><%= @count %></h1>
+<a href="/account/new">new</a>
+<table>
+  <tr>
+    <th style="width: 150px;">
+      id
+    </th>
+    <th style="width: 150px;">
+      first_name
+    </th>
+    <th style="width: 150px;">
+      last_name
+    </th>
+    <th style="width: 300px;">
+      created_at
+    </th>
+    <th style="width: 150px;">
+    </th>
+  </tr >
+  <% @accounts.each do |account| %>
+    <tr>
+      <td>
+        <%= account.id rescue '' %>
+      </td>
+      <td>
+        <%= account.first_name rescue '' %>
+      </td>
+      <td>
+        <%= account.last_name rescue '' %>
+      </td>
+      <td>
+        <%= account.created_at rescue '' %>
+      </td>
+      <td>
+        <a href="/accounts/<%= account.id %>">show</a>
+        <!--<a href="/accounts/<%= account.id %>" method="post" >Delete</a>-->
+      </td>
+    </tr>
+  <% end %>
+</table>

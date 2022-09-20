@@ -1,0 +1,42 @@
+<h1><%= @title %></h1>
+<h1><%= @count %></h1>
+
+<a href="/manager/new">new</a>
+<table>
+  <tr>
+    <th style="width: 150px;">
+      id
+    </th>
+    <th style="width: 150px;">
+      first_name
+    </th>
+    <th style="width: 150px;">
+      last_name
+    </th>
+    <th style="width: 300px;">
+      created_at
+    </th>
+    <th style="width: 150px;">
+    </th>
+  </tr >
+  <% @managers.each do |manager| %>
+    <tr>
+      <td>
+        <%= manager.id rescue '' %>
+      </td>
+      <td>
+        <%= manager.last_name rescue '' %>
+      </td>
+      <td>
+        <%= manager.last_name rescue '' %>
+      </td>
+      <td>
+        <%= manager.created_at rescue '' %>
+      </td>
+      <td>
+        <a href="/managers/<%= manager.id %>">show</a>
+        <!--<a href="/managers/<%= manager.id %>" method="post" >Delete</a>-->
+      </td>
+    </tr>
+  <% end %>
+</table>
